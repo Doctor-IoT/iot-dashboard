@@ -20,6 +20,9 @@ A lightweight IoT device monitoring dashboard built with PHP + SQLite, designed 
 - **Multilingual (EN / IT)** — built-in language switcher; language stored in session and cookie; automatically detected from the browser's Accept-Language header
 - **Secure by default** — CSRF protection, bcrypt passwords, rate-limited login, session hardening, API key in HTTP header only
 
+![Screenshot of a real installation - public dashboard.](https://github.com/Doctor-IoT/iot-dashboard/blob/main/img/Screenshot%202026-11-13%20at%2015-39-51%20IoT%20Status%20Dashboard.png)
+
+![Screenshot of a real installation - private dashboard.](https://github.com/Doctor-IoT/iot-dashboard/blob/main/img/Screenshot%202026-11-13%20at%2015-43-51%20Private%20Dashboard%20%E2%80%94%20IoT.png)
 ---
 
 ## Requirements

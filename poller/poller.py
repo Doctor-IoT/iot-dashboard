@@ -34,7 +34,7 @@ from datetime import datetime
 
 API_BASE_URL = os.environ.get(
     'IOT_API_URL',
-    'https://your-web-server.example.com/api.php'   # <-- change this
+    'https://www.yoursite.com/iot-dashboard/public/api.php'   # <-- change this
 )
 API_KEY = os.environ.get(
     'IOT_API_KEY',

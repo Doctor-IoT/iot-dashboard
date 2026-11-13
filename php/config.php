@@ -23,10 +23,10 @@ define('DB_PATH', dirname(__DIR__) . '/db/iot.sqlite');
 define('DB_API_KEY', 'CHANGE_THIS_SECRET_KEY');
 
 // ─── API endpoint (used by the Python poller to know where to POST results) ───
-define('POLL_API_URL', 'https://www.sparclab.it/iot-dashboard/public/api.php');
+define('POLL_API_URL', 'https://www.yoursite.com/iot-dashboard/public/api.php');
 
 // ─── Public site URL (used in alert emails) ───────────────────────────────────
-define('SITE_PUBLIC_URL', 'https://www.sparclab.it/iot-dashboard/public/');
+define('SITE_PUBLIC_URL', 'https://www.yoursite.com/iot-dashboard/public/');
 
 // ─── Poller staleness threshold ───────────────────────────────────────────────
 // If no ping data has been received for more than this many minutes, devices

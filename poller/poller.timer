@@ -1,0 +1,12 @@
+# /etc/systemd/system/iot-poller.timer
+[Unit]
+Description=Esegui il poller IoT ogni minuto
+Requires=iot-poller.service
+
+[Timer]
+OnBootSec=30sec
+OnUnitActiveSec=1min
+Unit=iot-poller.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,170 @@
+<?php
+/**
+ * English (en) translation strings.
+ * Keys must match exactly between all language files.
+ */
+return [
+
+    // ── Generic ────────────────────────────────────────────────────────────
+    'save'              => 'Save',
+    'cancel'            => 'Cancel',
+    'edit'              => 'Edit',
+    'delete'            => 'Delete',
+    'yes'               => 'Yes',
+    'no'                => 'No',
+    'actions'           => 'Actions',
+    'loading'           => 'Loading…',
+    'error'             => 'Error',
+    'success'           => 'Done',
+    'optional'          => 'optional',
+    'version'           => 'Version',
+
+    // ── Status labels ──────────────────────────────────────────────────────
+    'status_online'     => 'Online',
+    'status_offline'    => 'Offline',
+    'status_unknown'    => 'Unknown',
+
+    // ── Navigation ─────────────────────────────────────────────────────────
+    'nav_devices'       => 'Devices',
+    'nav_settings'      => 'Settings',
+    'nav_logout'        => 'Logout',
+
+    // ── public/index.php ───────────────────────────────────────────────────
+    'index_title'       => 'IoT Status Dashboard',
+    'index_subtitle'    => 'Real-time status of public devices',
+    'sort_by'           => 'Sort by:',
+    'sort_name'         => 'Name',
+    'sort_status'       => 'Status',
+    'sort_location'     => 'Location',
+    'last_ping'         => 'Last ping received:',
+    'last_ping_offline' => 'Online until:',
+    'page_updated_at'   => 'Page updated:',
+    'poller_tile_label'  => 'Last poller contact',
+    'poller_never_short' => 'Never contacted',
+    'poller_ok'          => 'Monitoring active — last contact:',
+    'poller_stale'      => '⚠️ Poller silent for',
+    'poller_stale_note' => '— data may be outdated.',
+    'poller_never'      => '⚠️ The poller has never contacted the server.',
+    'status_stale'      => 'N/A',
+    'private_area'      => 'Private area',
+    'login_title'       => 'Private area login',
+    'username'          => 'Username',
+    'password'          => 'Password',
+    'sign_in'           => 'Sign in',
+    'login_error'       => 'Invalid credentials.',
+    'footer_version'    => 'IoT Status Dashboard — Version 1.4',
+    'col_status'        => 'Status',
+    'col_name'          => 'Name',
+    'col_description'   => 'Description',
+    'col_ip'            => 'IP',
+    'col_location'      => 'Location',
+    'col_public'        => 'Public',
+    'col_last_ping'     => 'Last ping received',
+    'col_latency'       => 'Latency',
+
+    // ── public/dashboard.php ───────────────────────────────────────────────
+    'dash_title'        => 'Private Dashboard — IoT',
+    'dash_heading'      => 'Private IoT Dashboard',
+    'dash_total'        => 'Total',
+    'dash_online'       => 'Online',
+    'dash_offline'      => 'Offline',
+    'dash_public'       => 'Public',
+    'dash_no_devices'   => 'No devices configured yet.',
+
+    // ── public/admin.php ───────────────────────────────────────────────────
+    'admin_title'       => 'Manage Devices',
+    'admin_add_btn'     => 'Add device',
+    'form_name'         => 'Name',
+    'form_ip'           => 'IP Address / Hostname',
+    'form_description'  => 'Description',
+    'form_location'     => 'Location',
+    'form_public'       => 'Visible on the public page',
+    'form_active'       => 'Active (included in polling)',
+    'form_save'         => 'Save changes',
+    'form_add'          => 'Add device',
+    'confirm_delete'    => 'Permanently delete this device?',
+    'poll_heading'      => 'Polling script',
+    'poll_intro'        => 'The Python script polls every device that has polling enabled.',
+    'poll_cron'         => 'Suggested crontab entry (every minute):',
+    'poll_manual'       => 'To run it manually:',
+    'msg_added'         => 'Device added successfully.',
+    'msg_updated'       => 'Device updated successfully.',
+    'msg_deleted'       => 'Device deleted.',
+    'err_name_required' => 'The device name is required.',
+    'err_ip_required'   => 'The IP address / hostname is required.',
+    'err_not_found'     => 'Device not found.',
+
+    // ── public/settings.php ────────────────────────────────────────────────
+    'settings_title'    => 'Settings',
+    'settings_subtitle' => 'Email notifications and account configuration',
+    'settings_email_heading'   => 'Email notifications',
+    'settings_sender_heading'  => 'Sender',
+    'settings_log_heading'     => 'Recent alerts sent',
+    'settings_test_heading'    => 'Test email',
+    'field_email_primary'      => 'Primary email (admin)',
+    'field_email_secondary'    => 'Secondary email (optional)',
+    'field_offline_minutes'    => 'Offline threshold (minutes)',
+    'field_sender_name'        => 'Sender name',
+    'field_sender_email'       => 'Sender email',
+    'log_col_device'           => 'Device',
+    'log_col_type'             => 'Type',
+    'log_col_sent_at'          => 'Sent at',
+    'log_no_alerts'            => 'No alerts sent yet.',
+    'btn_save_settings'        => 'Save settings',
+    'btn_send_test'            => 'Send test',
+    'msg_settings_saved'       => 'Settings saved.',
+    'msg_test_sent'            => 'Test email sent.',
+    'msg_test_no_email'        => 'Please set a primary email first.',
+    'msg_test_failed'          => 'Failed to send test email.',
+    'lang_heading'             => 'Language',
+    'lang_label'               => 'Interface language',
+
+    // ── Logo settings ──────────────────────────────────────────────────────
+    'logo_heading'             => 'Site logo',
+    'logo_label'               => 'Upload a custom logo (PNG, JPG, SVG, WebP — max 512 KB)',
+    'logo_current'             => 'Current logo',
+    'logo_using_default'       => 'Using default logo',
+    'logo_upload_btn'          => 'Upload logo',
+    'logo_remove_btn'          => 'Remove (restore default)',
+    'logo_saved'               => 'Logo updated.',
+    'logo_removed'             => 'Logo removed. Default restored.',
+    'logo_err_no_file'         => 'No file selected.',
+    'logo_err_too_large'       => 'File too large (max 512 KB).',
+    'logo_err_bad_type'        => 'Unsupported file type. Use PNG, JPG, SVG or WebP.',
+    'logo_err_read'            => 'Could not read the uploaded file.',
+
+    // ── public/login.php ───────────────────────────────────────────────────
+    'login_page_title'  => 'Private login',
+    'login_back'        => '← Back to public dashboard',
+    'login_failed'      => 'Incorrect username or password.',
+    'login_locked'      => 'Too many failed attempts. Try again in a few minutes.',
+
+    // ── public/device_history.php ──────────────────────────────────────────
+    'history_title'     => 'Ping History — {device}',
+    'history_col_time'  => 'Date / Time',
+    'history_col_status'=> 'Status',
+    'history_col_latency'=> 'Latency',
+    'history_empty'     => 'No history data available.',
+    'history_back'      => '← Back to dashboard',
+
+    // ── public/install.php ─────────────────────────────────────────────────
+    'install_title'     => 'IoT Dashboard — Installation',
+    'install_heading'   => 'IoT Dashboard — Installation',
+    'install_done'      => 'Installation complete.',
+    'install_next'      => 'Next steps',
+    'install_step1'     => 'Delete or restrict access to this file.',
+    'install_step2'     => 'Open the dashboard and log in.',
+    'install_step3'     => 'Configure the polling script.',
+
+    // ── public/migrate.php ─────────────────────────────────────────────────
+    'migrate_title'     => 'IoT Dashboard — Migration',
+    'migrate_heading'   => 'IoT Dashboard — Database migration',
+    'migrate_banner'    => 'Run this script once after each upgrade. Delete it afterwards.',
+
+    // ── public/check_env.php ───────────────────────────────────────────────
+    'check_title'       => 'Environment check',
+    'check_heading'     => 'Environment check',
+    'check_ok'          => 'available',
+    'check_missing'     => 'MISSING',
+    'check_warning'     => 'Delete this file once checks are complete.',
+];

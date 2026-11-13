@@ -1,0 +1,30 @@
+# ── Database ──────────────────────────────────────────────────────────────────
+db/*.sqlite
+db/*.sqlite-wal
+db/*.sqlite-shm
+
+# ── One-time setup/diagnostic files (delete after use) ───────────────────────
+public/install.php
+public/migrate.php
+public/check_env.php
+public/pathcheck.php
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+poller/*.egg-info/
+poller/venv/
+poller/.venv/
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+
+# ── OS / editor artefacts ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.orig

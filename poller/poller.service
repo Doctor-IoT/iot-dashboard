@@ -1,0 +1,25 @@
+# /etc/systemd/system/iot-poller.service
+# Alternativa al crontab: servizio systemd che lancia il poller ogni minuto.
+#
+# Installazione:
+#   sudo cp poller.service /etc/systemd/system/iot-poller.service
+#   sudo cp poller.timer   /etc/systemd/system/iot-poller.timer
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now iot-poller.timer
+
+[Unit]
+Description=IoT Dashboard Poller (singola esecuzione)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=nobody
+WorkingDirectory=/opt/iot-poller
+ExecStart=/usr/bin/python3 /opt/iot-poller/poller.py
+StandardOutput=journal
+StandardError=journal
+
+# Variabili d'ambiente (alternativa al file .env)
+Environment=IOT_API_URL=https://your-web-server.example.com/api.php
+Environment=IOT_API_KEY=CHANGE_THIS_SECRET_KEY

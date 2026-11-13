@@ -1,0 +1,170 @@
+<?php
+/**
+ * Italian (it) translation strings.
+ * Keys must match exactly between all language files.
+ */
+return [
+
+    // ── Generic ────────────────────────────────────────────────────────────
+    'save'              => 'Salva',
+    'cancel'            => 'Annulla',
+    'edit'              => 'Modifica',
+    'delete'            => 'Elimina',
+    'yes'               => 'Sì',
+    'no'                => 'No',
+    'actions'           => 'Azioni',
+    'loading'           => 'Caricamento…',
+    'error'             => 'Errore',
+    'success'           => 'Fatto',
+    'optional'          => 'facoltativo',
+    'version'           => 'Versione',
+
+    // ── Status labels ──────────────────────────────────────────────────────
+    'status_online'     => 'Online',
+    'status_offline'    => 'Offline',
+    'status_unknown'    => 'Sconosciuto',
+
+    // ── Navigation ─────────────────────────────────────────────────────────
+    'nav_devices'       => 'Dispositivi',
+    'nav_settings'      => 'Impostazioni',
+    'nav_logout'        => 'Esci',
+
+    // ── public/index.php ───────────────────────────────────────────────────
+    'index_title'       => 'IoT Status Dashboard',
+    'index_subtitle'    => 'Stato in tempo reale dei dispositivi pubblici',
+    'sort_by'           => 'Ordina per:',
+    'sort_name'         => 'Nome',
+    'sort_status'       => 'Stato',
+    'sort_location'     => 'Posizione',
+    'last_ping'         => 'Ultimo ping ricevuto:',
+    'last_ping_offline' => 'Online fino a:',
+    'page_updated_at'   => 'Pagina aggiornata:',
+    'poller_tile_label'  => 'Ultimo contatto poller',
+    'poller_never_short' => 'Mai contattato',
+    'poller_ok'          => 'Monitoraggio attivo — ultimo contatto:',
+    'poller_stale'      => '⚠️ Poller silente da',
+    'poller_stale_note' => '— i dati potrebbero non essere aggiornati.',
+    'poller_never'      => '⚠️ Il poller non ha mai contattato il server.',
+    'status_stale'      => 'N/D',
+    'private_area'      => 'Area privata',
+    'login_title'       => 'Accesso area privata',
+    'username'          => 'Utente',
+    'password'          => 'Password',
+    'sign_in'           => 'Accedi',
+    'login_error'       => 'Credenziali non valide.',
+    'footer_version'    => 'IoT Status Dashboard — Versione 1.4',
+    'col_status'        => 'Stato',
+    'col_name'          => 'Nome',
+    'col_description'   => 'Descrizione',
+    'col_ip'            => 'IP',
+    'col_location'      => 'Posizione',
+    'col_public'        => 'Pubblico',
+    'col_last_ping'     => 'Ultimo ping ricevuto',
+    'col_latency'       => 'Latenza',
+
+    // ── public/dashboard.php ───────────────────────────────────────────────
+    'dash_title'        => 'Dashboard Privata — IoT',
+    'dash_heading'      => 'Dashboard IoT Privata',
+    'dash_total'        => 'Totale',
+    'dash_online'       => 'Online',
+    'dash_offline'      => 'Offline',
+    'dash_public'       => 'Pubblici',
+    'dash_no_devices'   => 'Nessun dispositivo configurato.',
+
+    // ── public/admin.php ───────────────────────────────────────────────────
+    'admin_title'       => 'Gestione Dispositivi',
+    'admin_add_btn'     => 'Aggiungi dispositivo',
+    'form_name'         => 'Nome',
+    'form_ip'           => 'Indirizzo IP / Hostname',
+    'form_description'  => 'Descrizione',
+    'form_location'     => 'Posizione',
+    'form_public'       => 'Visibile nella pagina pubblica',
+    'form_active'       => 'Attivo (incluso nel polling)',
+    'form_save'         => 'Salva modifiche',
+    'form_add'          => 'Aggiungi dispositivo',
+    'confirm_delete'    => 'Eliminare definitivamente questo dispositivo?',
+    'poll_heading'      => 'Script di polling',
+    'poll_intro'        => 'Lo script Python esegue il polling di ogni dispositivo con il polling abilitato.',
+    'poll_cron'         => 'Voce crontab suggerita (ogni minuto):',
+    'poll_manual'       => 'Per eseguirlo manualmente:',
+    'msg_added'         => 'Dispositivo aggiunto con successo.',
+    'msg_updated'       => 'Dispositivo aggiornato con successo.',
+    'msg_deleted'       => 'Dispositivo eliminato.',
+    'err_name_required' => 'Il nome del dispositivo è obbligatorio.',
+    'err_ip_required'   => "L'indirizzo IP / hostname è obbligatorio.",
+    'err_not_found'     => 'Dispositivo non trovato.',
+
+    // ── public/settings.php ────────────────────────────────────────────────
+    'settings_title'    => 'Impostazioni',
+    'settings_subtitle' => 'Notifiche email e configurazione account',
+    'settings_email_heading'   => 'Notifiche email',
+    'settings_sender_heading'  => 'Mittente',
+    'settings_log_heading'     => 'Avvisi recenti inviati',
+    'settings_test_heading'    => 'Email di prova',
+    'field_email_primary'      => 'Email principale (admin)',
+    'field_email_secondary'    => 'Email secondaria (facoltativa)',
+    'field_offline_minutes'    => 'Soglia offline (minuti)',
+    'field_sender_name'        => 'Nome mittente',
+    'field_sender_email'       => 'Email mittente',
+    'log_col_device'           => 'Dispositivo',
+    'log_col_type'             => 'Tipo',
+    'log_col_sent_at'          => 'Inviato il',
+    'log_no_alerts'            => 'Nessun avviso inviato finora.',
+    'btn_save_settings'        => 'Salva impostazioni',
+    'btn_send_test'            => 'Invia prova',
+    'msg_settings_saved'       => 'Impostazioni salvate.',
+    'msg_test_sent'            => 'Email di prova inviata.',
+    'msg_test_no_email'        => 'Imposta prima un indirizzo email principale.',
+    'msg_test_failed'          => "Invio email di prova non riuscito.",
+    'lang_heading'             => 'Lingua',
+    'lang_label'               => 'Lingua interfaccia',
+
+    // ── Logo settings ──────────────────────────────────────────────────────
+    'logo_heading'             => 'Logo del sito',
+    'logo_label'               => 'Carica un logo personalizzato (PNG, JPG, SVG, WebP — max 512 KB)',
+    'logo_current'             => 'Logo attuale',
+    'logo_using_default'       => 'Logo predefinito attivo',
+    'logo_upload_btn'          => 'Carica logo',
+    'logo_remove_btn'          => 'Rimuovi (ripristina predefinito)',
+    'logo_saved'               => 'Logo aggiornato.',
+    'logo_removed'             => 'Logo rimosso. Predefinito ripristinato.',
+    'logo_err_no_file'         => 'Nessun file selezionato.',
+    'logo_err_too_large'       => 'File troppo grande (max 512 KB).',
+    'logo_err_bad_type'        => 'Tipo di file non supportato. Usa PNG, JPG, SVG o WebP.',
+    'logo_err_read'            => 'Impossibile leggere il file caricato.',
+
+    // ── public/login.php ───────────────────────────────────────────────────
+    'login_page_title'  => 'Accesso privato',
+    'login_back'        => '← Torna alla dashboard pubblica',
+    'login_failed'      => 'Nome utente o password errati.',
+    'login_locked'      => 'Troppi tentativi falliti. Riprova tra qualche minuto.',
+
+    // ── public/device_history.php ──────────────────────────────────────────
+    'history_title'     => 'Storico Ping — {device}',
+    'history_col_time'  => 'Data / Ora',
+    'history_col_status'=> 'Stato',
+    'history_col_latency'=> 'Latenza',
+    'history_empty'     => 'Nessun dato storico disponibile.',
+    'history_back'      => '← Torna alla dashboard',
+
+    // ── public/install.php ─────────────────────────────────────────────────
+    'install_title'     => 'IoT Dashboard — Installazione',
+    'install_heading'   => 'IoT Dashboard — Installazione',
+    'install_done'      => 'Installazione completata.',
+    'install_next'      => 'Passi successivi',
+    'install_step1'     => 'Elimina o limita l\'accesso a questo file.',
+    'install_step2'     => 'Apri la dashboard ed effettua il login.',
+    'install_step3'     => 'Configura lo script di polling.',
+
+    // ── public/migrate.php ─────────────────────────────────────────────────
+    'migrate_title'     => 'IoT Dashboard — Migrazione',
+    'migrate_heading'   => 'IoT Dashboard — Migrazione database',
+    'migrate_banner'    => 'Esegui questo script una volta dopo ogni aggiornamento. Eliminalo in seguito.',
+
+    // ── public/check_env.php ───────────────────────────────────────────────
+    'check_title'       => 'Verifica ambiente',
+    'check_heading'     => 'Verifica ambiente',
+    'check_ok'          => 'disponibile',
+    'check_missing'     => 'MANCANTE',
+    'check_warning'     => 'Elimina questo file al termine dei controlli.',
+];

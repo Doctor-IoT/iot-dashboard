@@ -7,8 +7,8 @@
  *   iot-dashboard/db/iot.sqlite    <- SQLite database (blocked by .htaccess)
  *   iot-dashboard/public/          <- web root (only folder served over HTTP)
  *
- * Both php/ and db/ are protected by .htaccess rules but are NOT outside the
- * web root. The root iot-dashboard/.htaccess must be in place as well.
+ * Both php/ and db/ are protected by .htaccess rules but are NOT outside the web root.
+ * The root iot-dashboard/.htaccess must be in place as well.
  */
 
 // ─── Database path ────────────────────────────────────────────────────────────

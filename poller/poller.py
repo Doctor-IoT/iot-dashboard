@@ -18,7 +18,6 @@ Manual execution:
 Crontab (every minute):
   * * * * * /usr/bin/python3 /opt/iot-poller/poller.py >> /var/log/iot-poller.log 2>&1
 """
-
 import os
 import sys
 import json

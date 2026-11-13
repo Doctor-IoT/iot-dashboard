@@ -3,7 +3,7 @@
 A lightweight IoT device monitoring dashboard built with PHP + SQLite, designed to run on shared hosting (cPanel / Apache).
 
 **Version:** 1.4  
-**Author:** Francesco Orfei / SPARC LAB  
+**Author:** Dr. Francesco Orfei, PhD / SPARC LAB  
 **Live demo:** [www.sparclab.it/iot-dashboard/](https://www.sparclab.it/iot-dashboard/)
 
 ---

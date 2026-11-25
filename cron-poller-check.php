@@ -58,3 +58,4 @@ echo "[{$ts}] cron-poller-check: running\n";
 check_and_send_poller_alert();
 
 echo "[{$ts}] cron-poller-check: done\n";
+

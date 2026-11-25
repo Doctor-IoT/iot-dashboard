@@ -1,4 +1,4 @@
--- schema.sql — IoT Dashboard v1.2 database schema
+-- schema.sql — IoT Dashboard v>1.2 database schema
 -- Apply via install.php (recommended) or manually:
 --   sqlite3 db/iot.sqlite < schema.sql
 

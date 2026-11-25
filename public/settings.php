@@ -69,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $ok = send_mail(
                 $to,
-                'Test notification - IoT Dashboard SPARC LAB',
-                "This is a test message sent from IoT Dashboard SPARC LAB.\n\n" .
+                'Test notification - IoT Dashboard Doctor IoT',
+                "This is a test message sent from IoT Dashboard Doctor IoT.\n\n" .
                 "If you are receiving this email, notifications are configured correctly.\n\n" .
                 "Test date/time: " . date('Y-m-d H:i:s')
             );
@@ -118,8 +118,8 @@ $s = DB::getAllSettings();
 $defaults = array(
     'alert_email_primary'   => '',
     'alert_email_secondary' => '',
-    'alert_from_name'       => 'IoT Dashboard SPARC LAB',
-    'alert_from_email'      => 'noreply@sparclab.it',
+    'alert_from_name'       => 'IoT Dashboard Doctor IoT',
+    'alert_from_email'      => 'noreply@example.com',
     'alert_enabled'         => '1',
     'alert_offline_minutes' => '3',
 );
@@ -448,7 +448,7 @@ try {
 </main>
 
 <footer>
-    <p>&copy; <?= date('Y') ?> <a href="https://www.sparclab.it" target="_blank" rel="noopener">SPARC LAB</a>
+    <p>&copy; <?= date('Y') ?> <a href="https://doctoriot.wordpress.com/" target="_blank" rel="noopener">Doctor IoT</a>
     &nbsp;&middot;&nbsp; <?= __('footer_version') ?></p>
 </footer>
 

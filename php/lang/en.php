@@ -52,7 +52,7 @@ return [
     'password'          => 'Password',
     'sign_in'           => 'Sign in',
     'login_error'       => 'Invalid credentials.',
-    'footer_version'    => 'IoT Status Dashboard — Version 1.4',
+    'footer_version'    => 'IoT Status Dashboard — Version 1.5',
     'col_status'        => 'Status',
     'col_name'          => 'Name',
     'col_description'   => 'Description',
@@ -140,12 +140,16 @@ return [
     'login_locked'      => 'Too many failed attempts. Try again in a few minutes.',
 
     // ── public/device_history.php ──────────────────────────────────────────
-    'history_title'     => 'Ping History — {device}',
-    'history_col_time'  => 'Date / Time',
-    'history_col_status'=> 'Status',
-    'history_col_latency'=> 'Latency',
-    'history_empty'     => 'No history data available.',
-    'history_back'      => '← Back to dashboard',
+    'history_title'          => 'Ping History — {device}',
+    'history_col_time'       => 'Date / Time',
+    'history_col_status'     => 'Status',
+    'history_col_latency'    => 'Latency',
+    'history_empty'          => 'No history data available.',
+    'history_back'           => '← Back to dashboard',
+    'history_chart_title'    => 'Latency over last 60 pings',
+    'history_chart_latency'  => 'Latency (ms)',
+    'history_chart_offline'  => 'Offline',
+    'history_chart_no_data'  => 'No data',
 
     // ── public/install.php ─────────────────────────────────────────────────
     'install_title'     => 'IoT Dashboard — Installation',

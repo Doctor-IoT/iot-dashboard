@@ -148,9 +148,9 @@ function check_and_send_poller_alert(): void
 function build_offline_body(string $name, string $since, int $minutes): string
 {
     $ts   = date('d/m/Y H:i', strtotime($since));
-    $site = 'https://www.sparclab.it/iot-dashboard/public/';
+    $site = 'https://www.example.com/iot-dashboard/public/';
     return <<<TEXT
-IoT Dashboard - SPARC LAB
+IoT Dashboard - Doctor IoT
 ==========================
 
 ALERT: device "{$name}" is OFFLINE.
@@ -162,7 +162,7 @@ Please check the device and visit the dashboard for details:
 {$site}
 
 --
-This message was generated automatically by IoT Dashboard SPARC LAB.
+This message was generated automatically by IoT Dashboard Doctor IoT.
 To disable notifications or change email addresses, log in and go to:
 {$site}settings.php
 TEXT;
@@ -171,9 +171,9 @@ TEXT;
 function build_online_body(string $name): string
 {
     $ts   = date('d/m/Y H:i');
-    $site = 'https://www.sparclab.it/iot-dashboard/public/';
+    $site = 'https://www.example.com/iot-dashboard/public/';
     return <<<TEXT
-IoT Dashboard - SPARC LAB
+IoT Dashboard - Doctor IoT
 ==========================
 
 RECOVERY: device "{$name}" is back ONLINE.
@@ -184,7 +184,7 @@ Dashboard:
 {$site}
 
 --
-This message was generated automatically by IoT Dashboard SPARC LAB.
+This message was generated automatically by IoT Dashboard Doctor IoT.
 TEXT;
 }
 
@@ -193,9 +193,9 @@ function build_poller_stale_body(int $age_min, string $last_seen_utc): string
     $dt   = new DateTime($last_seen_utc, new DateTimeZone('UTC'));
     $dt->setTimezone(new DateTimeZone(date_default_timezone_get()));
     $ts   = $dt->format('d/m/Y H:i');
-    $site = defined('SITE_PUBLIC_URL') ? SITE_PUBLIC_URL : 'https://www.sparclab.it/iot-dashboard/public/';
+    $site = defined('SITE_PUBLIC_URL') ? SITE_PUBLIC_URL : 'https://www.example.com/iot-dashboard/public/';
     return <<<TEXT
-IoT Dashboard - SPARC LAB
+IoT Dashboard - Doctor IoT
 ==========================
 
 WARNING: the monitoring poller has stopped sending data.
@@ -213,7 +213,7 @@ Dashboard:
 {$site}
 
 --
-This message was generated automatically by IoT Dashboard SPARC LAB.
+This message was generated automatically by IoT Dashboard Doctor IoT.
 To disable notifications, log in and go to: {$site}settings.php
 TEXT;
 }
@@ -223,9 +223,9 @@ function build_poller_recovered_body(string $last_seen_utc): string
     $dt   = new DateTime($last_seen_utc, new DateTimeZone('UTC'));
     $dt->setTimezone(new DateTimeZone(date_default_timezone_get()));
     $ts   = $dt->format('d/m/Y H:i');
-    $site = defined('SITE_PUBLIC_URL') ? SITE_PUBLIC_URL : 'https://www.sparclab.it/iot-dashboard/public/';
+    $site = defined('SITE_PUBLIC_URL') ? SITE_PUBLIC_URL : 'https://www.example.com/iot-dashboard/public/';
     return <<<TEXT
-IoT Dashboard - SPARC LAB
+IoT Dashboard - Doctor IoT
 ==========================
 
 RECOVERED: the monitoring poller is active again.
@@ -237,7 +237,7 @@ Dashboard:
 {$site}
 
 --
-This message was generated automatically by IoT Dashboard SPARC LAB.
+This message was generated automatically by IoT Dashboard Doctor IoT.
 TEXT;
 }
 
@@ -252,8 +252,8 @@ TEXT;
  */
 function send_mail(string $to, string $subject, string $body): bool
 {
-    $from_name  = DB::getSetting('alert_from_name',  'IoT Dashboard SPARC LAB');
-    $from_email = DB::getSetting('alert_from_email', 'noreply@sparclab.it');
+    $from_name  = DB::getSetting('alert_from_name',  'IoT Dashboard Doctor IoT');
+    $from_email = DB::getSetting('alert_from_email', 'noreply@example.com');
 
     // Sanitise header fields against injection
     $from_name  = preg_replace('/[\r\n]/', '', $from_name);

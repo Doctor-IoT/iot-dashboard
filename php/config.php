@@ -7,8 +7,8 @@
  *   iot-dashboard/db/iot.sqlite    <- SQLite database (blocked by .htaccess)
  *   iot-dashboard/public/          <- web root (only folder served over HTTP)
  *
- * Both php/ and db/ are protected by .htaccess rules but are NOT outside the web root.
- * The root iot-dashboard/.htaccess must be in place as well.
+ * Both php/ and db/ are protected by .htaccess rules but are NOT outside the
+ * web root. The root iot-dashboard/.htaccess must be in place as well.
  */
 
 // ─── Database path ────────────────────────────────────────────────────────────
@@ -23,10 +23,10 @@ define('DB_PATH', dirname(__DIR__) . '/db/iot.sqlite');
 define('DB_API_KEY', 'CHANGE_THIS_SECRET_KEY');
 
 // ─── API endpoint (used by the Python poller to know where to POST results) ───
-define('POLL_API_URL', 'https://www.yoursite.com/iot-dashboard/public/api.php');
+define('POLL_API_URL', 'https://www.example.com/iot-dashboard/public/api.php');
 
 // ─── Public site URL (used in alert emails) ───────────────────────────────────
-define('SITE_PUBLIC_URL', 'https://www.yoursite.com/iot-dashboard/public/');
+define('SITE_PUBLIC_URL', 'https://www.example.com/iot-dashboard/public/');
 
 // ─── Poller staleness threshold ───────────────────────────────────────────────
 // If no ping data has been received for more than this many minutes, devices

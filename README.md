@@ -2,9 +2,9 @@
 
 A lightweight IoT device monitoring dashboard built with PHP + SQLite, designed to run on shared hosting (cPanel / Apache).
 
-**Version:** 1.4  
-**Author:** Dr. Francesco Orfei, PhD / SPARC LAB  
-**Live demo:** [www.sparclab.it/iot-dashboard/](https://www.sparclab.it/iot-dashboard/)
+**Version:** 1.5  
+**Author:** Doctor IoT  
+**Live demo:** [doctoriot.wordpress.com/iot-dashboard/](https://doctoriot.wordpress.com/iot-dashboard/)
 
 ---
 
@@ -20,9 +20,6 @@ A lightweight IoT device monitoring dashboard built with PHP + SQLite, designed 
 - **Multilingual (EN / IT)** — built-in language switcher; language stored in session and cookie; automatically detected from the browser's Accept-Language header
 - **Secure by default** — CSRF protection, bcrypt passwords, rate-limited login, session hardening, API key in HTTP header only
 
-![Screenshot of a real installation - public dashboard.](https://github.com/Doctor-IoT/iot-dashboard/blob/main/img/Screenshot%202026-11-13%20at%2015-39-51%20IoT%20Status%20Dashboard.png)
-
-![Screenshot of a real installation - private dashboard.](https://github.com/Doctor-IoT/iot-dashboard/blob/main/img/Screenshot%202026-11-13%20at%2015-43-51%20Private%20Dashboard%20%E2%80%94%20IoT.png)
 ---
 
 ## Requirements
@@ -65,7 +62,7 @@ iot-dashboard/
 │   ├── api.php             # JSON API for the poller
 │   ├── logo.php            # Serves the custom logo or the built-in SVG default
 │   ├── install.php         # ⚠ One-time setup — DELETE after use
-│   ├── migrate.php         # ⚠ DB migration to v1.4 — DELETE after use
+│   ├── migrate.php         # ⚠ DB migration to v1.5 — DELETE after use
 │   ├── check_env.php       # ⚠ Hosting compatibility check — DELETE after use
 │   └── assets/
 │       └── style.css
@@ -125,7 +122,7 @@ Username: `admin` | Password: the one you set in step 4.
 
 ---
 
-## Upgrading from v1.2 to v1.4
+## Upgrading from v1.2 to v1.5
 
 Upload all updated files, then run the migration script:
 
@@ -136,11 +133,16 @@ https://your-site.com/iot-dashboard/public/migrate.php?pass=CHANGE_THIS_PASSPHRA
 The script is idempotent and safe to run on an existing database.  
 **Delete `migrate.php` via FTP after use.**
 
-### What's new in v1.4
+### What's new in v1.5
 
 - **Custom logo** — upload a PNG / JPG / SVG / WebP logo from Settings; shown in every page header and in the login boxes; remove it to restore the built-in default
 - Logo stored securely in the SQLite database (no filesystem writes needed)
 - New files: `public/logo.php`; new DB methods: `DB::saveLogo()`, `DB::getLogo()`, `DB::deleteLogo()`
+- **Latency chart** — per-device latency history chart (Canvas, zero dependencies) accessible from the 📊 icon in the dashboard Actions column
+- **Poller retry logic** — configurable retry on ping failure (`IOT_PING_RETRIES`, default 2 extra attempts); device marked offline only when all attempts fail — eliminates most false-offline events from occasional packet loss
+- **Poller staleness detection** — devices shown as N/A when the poller stops sending data; banner in the dashboard; email alert with 1-hour cooldown
+- **Poller cron script** (`cron-poller-check.php`) — dedicated script for hosting-panel cron; supports both CLI and URL-based (token-authenticated) invocation
+- **Multilingual (EN / IT)** — full language switcher; language stored in session and cookie; auto-detected from Accept-Language header
 
 ### What's new in v1.3
 
@@ -164,8 +166,10 @@ If you already have a running installation on v1.1, run the migration script. It
 |----------|-------------|
 | `IOT_API_URL` | Full URL to `api.php`, e.g. `https://your-site.com/iot-dashboard/public/api.php` |
 | `IOT_API_KEY` | Must match `DB_API_KEY` in `php/config.php` |
-| `IOT_PING_TIMEOUT` | Seconds per ping (default: `2`) |
-| `IOT_PING_COUNT` | Packets per ping (default: `1`) |
+| `IOT_PING_TIMEOUT` | Seconds per single ping attempt (default: `2`) |
+| `IOT_PING_COUNT` | ICMP packets per attempt (default: `1`) |
+| `IOT_PING_RETRIES` | Extra attempts after first failure (default: `2`); set to `0` to disable retries |
+| `IOT_RETRY_DELAY` | Seconds between retries (default: `1`) |
 
 ### Crontab (simplest)
 

@@ -197,7 +197,7 @@ function sort_arrow(string $key, string $current_key, string $current_dir): stri
         <a href="admin.php"><?= __('nav_devices') ?></a> |
         <a href="settings.php"><?= __('nav_settings') ?></a>
         &nbsp;·&nbsp;
-        © <?= date('Y') ?> <a href="https://www.sparclab.it" target="_blank" rel="noopener">SPARC LAB</a>
+        © <?= date('Y') ?> <a href="https://doctoriot.wordpress.com/" target="_blank" rel="noopener">Doctor IoT</a>
         &nbsp;·&nbsp; <?= __('footer_version') ?>
     </p>
 </footer>

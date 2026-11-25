@@ -225,7 +225,7 @@ $lang = i18n_lang();
 </main>
 
 <footer>
-    <p>© <?= date('Y') ?> <a href="https://www.sparclab.it" target="_blank" rel="noopener">SPARC LAB</a> &nbsp;·&nbsp; <?= __('footer_version') ?></p>
+    <p>© <?= date('Y') ?> <a href="https://doctoriot.wordpress.com/" target="_blank" rel="noopener">Doctor IoT</a> &nbsp;·&nbsp; <?= __('footer_version') ?></p>
 </footer>
 
 <!-- ── Login modal ─────────────────────────────────────────── -->

@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 """
 poller.py — IoT Dashboard polling script
-Version: 1.0
+Version: 1.1
 Author:  Francesco Orfei / doctoriot
 
 How it works:
   1. Downloads the list of active devices from the web API (GET /api.php?action=devices_list)
-  2. Sends an ICMP ping to each IP address
+  2. Sends ICMP pings to each IP address (with retry on failure, see IOT_PING_RETRIES)
   3. Submits the results in bulk to the API (POST /api.php?action=ping_results_bulk)
+
+Retry logic (v1.1):
+  If a ping fails, it is retried up to IOT_PING_RETRIES times with a short pause
+  (IOT_RETRY_DELAY seconds) between attempts. The device is marked offline only
+  when ALL retries fail. Latency is the average of all successful responses.
+  This eliminates most false-offline events caused by occasional packet loss.
 
 Python dependencies:
   pip3 install requests
@@ -18,8 +24,10 @@ Manual execution:
 Crontab (every minute):
   * * * * * /usr/bin/python3 /opt/iot-poller/poller.py >> /var/log/iot-poller.log 2>&1
 """
+
 import os
 import sys
+import re
 import json
 import time
 import logging
@@ -33,15 +41,17 @@ from datetime import datetime
 
 API_BASE_URL = os.environ.get(
     'IOT_API_URL',
-    'https://www.yoursite.com/iot-dashboard/public/api.php'   # <-- change this
+    'https://your-web-server.example.com/api.php'   # <-- change this
 )
 API_KEY = os.environ.get(
     'IOT_API_KEY',
     'CHANGE_THIS_SECRET_KEY'                         # <-- must match DB_API_KEY in config.php
 )
 
-PING_TIMEOUT    = int(os.environ.get('IOT_PING_TIMEOUT', '2'))    # seconds per ping
-PING_COUNT      = int(os.environ.get('IOT_PING_COUNT',   '1'))    # echo-request packets to send
+PING_TIMEOUT    = int(os.environ.get('IOT_PING_TIMEOUT', '2'))    # seconds per single ping attempt
+PING_COUNT      = int(os.environ.get('IOT_PING_COUNT',   '1'))    # ICMP packets per attempt
+PING_RETRIES    = int(os.environ.get('IOT_PING_RETRIES', '2'))    # extra attempts after first failure (0 = no retry)
+RETRY_DELAY     = float(os.environ.get('IOT_RETRY_DELAY', '1'))   # seconds between retries
 REQUEST_TIMEOUT = 10   # HTTP request timeout in seconds
 
 # ─── Logging ─────────────────────────────────────────────────────────────────
@@ -75,14 +85,13 @@ def get_devices() -> list[dict]:
         return []
 
 
-def ping(ip: str) -> tuple[str, float | None]:
+def _ping_once(ip: str) -> tuple[str, float | None]:
     """
-    Sends an ICMP ping to the given IP address.
-    Returns (status, latency_ms) where status is 'online' | 'offline'.
+    Sends a single ICMP ping sequence to ip.
+    Returns ('online', latency_ms) on success, ('offline', None) on failure.
     """
     system = platform.system().lower()
 
-    # Cross-platform ping command parameters
     if system == 'windows':
         cmd = ['ping', '-n', str(PING_COUNT), '-w', str(PING_TIMEOUT * 1000), ip]
     else:
@@ -99,7 +108,6 @@ def ping(ip: str) -> tuple[str, float | None]:
         elapsed_ms = (time.time() - t0) * 1000
 
         if result.returncode == 0:
-            # Try to extract the latency from the ping output
             latency = _parse_latency(result.stdout, elapsed_ms)
             return 'online', latency
         else:
@@ -112,9 +120,42 @@ def ping(ip: str) -> tuple[str, float | None]:
         return 'unknown', None
 
 
+def ping(ip: str) -> tuple[str, float | None]:
+    """
+    Pings ip with up to (1 + PING_RETRIES) attempts.
+
+    - Returns immediately on the first success (fail-fast-on-success).
+    - Waits RETRY_DELAY seconds between attempts.
+    - Device is 'online' if at least one attempt succeeds.
+    - Latency is the average of all successful responses.
+    - Device is 'offline' only when every attempt fails.
+    """
+    max_attempts = 1 + PING_RETRIES
+    latencies: list[float] = []
+    last_status = 'offline'
+
+    for attempt in range(1, max_attempts + 1):
+        status, latency = _ping_once(ip)
+
+        if status == 'online':
+            latencies.append(latency)
+            if attempt > 1:
+                log.debug(f"  {ip}: online on attempt {attempt}/{max_attempts}")
+            last_status = 'online'
+            break  # succeed fast — no need for more attempts
+
+        last_status = status  # 'offline' or 'unknown'
+
+        if attempt < max_attempts:
+            log.debug(f"  {ip}: attempt {attempt} failed, retrying in {RETRY_DELAY}s…")
+            time.sleep(RETRY_DELAY)
+
+    avg_latency = round(sum(latencies) / len(latencies), 2) if latencies else None
+    return last_status, avg_latency
+
+
 def _parse_latency(output: str, fallback_ms: float) -> float:
     """Extracts latency from ping output text; falls back to total round-trip time."""
-    import re
     # Linux/macOS: "time=12.3 ms"
     m = re.search(r'time[=<]([\d.]+)\s*ms', output)
     if m:
@@ -148,7 +189,7 @@ def send_results(results: list[dict]) -> bool:
 # ─── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
-    log.info("=== Polling cycle started ===")
+    log.info(f"=== Polling cycle started (retries={PING_RETRIES}, delay={RETRY_DELAY}s) ===")
     start = time.time()
 
     devices = get_devices()
